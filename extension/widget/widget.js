@@ -89,7 +89,7 @@ class Widget {
     }
 
     static checkUpdateAvailability() {
-        const remoteManifestUrl = '../manifest.json'; // TODO change url
+        const remoteManifestUrl = 'https://raw.githubusercontent.com/Arthez/Actum/master/extension/manifest.json';
         const localManifestUrl = '../manifest.json';
         Promise.all([
             fetch(remoteManifestUrl).then(response => response.json()),
