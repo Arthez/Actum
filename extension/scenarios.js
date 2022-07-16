@@ -33,7 +33,7 @@ const SCENARIO_SECTIONS = [
                     },
                     {
                         type: ACTION.CLICK,
-                        config: { selector: '#loginButton' },
+                        config: { selector: '#loginButton', optional: true },
                     },
                     {
                         type: ACTION.OPEN,
@@ -50,36 +50,24 @@ const SCENARIO_SECTIONS = [
                 title: 'Google translate example',
                 actions: [
                     {
-                        type: ACTION.CLICK,
-                        config: { selector: '.tl-more.tlid-open-target-language-list' },
+                        type: ACTION.FILL,
+                        config: { selector: 'textarea', value: 'translate this text' },
                     },
                     {
                         type: ACTION.WAIT,
-                        config: { delay: 2000 },
+                        config: { delay: 1000 },
                     },
                     {
                         type: ACTION.CLICK,
-                        config: { selector: '.tl-more.tlid-open-target-language-list' },
+                        config: { selector: '#i7', delay: 2000 },
                     },
                     {
                         type: ACTION.FILL,
-                        config: { selector: 'textarea[id=source]', value: 'translate this', optional: true },
-                    },
-                    {
-                        type: ACTION.WAIT,
-                        config: { delay: 3000 },
-                    },
-                    {
-                        type: ACTION.FILL,
-                        config: { selector: 'textarea[id=source]', value: 'Have a nice day!' },
-                    },
-                    {
-                        type: ACTION.WAIT,
-                        config: { delay: 1500 },
+                        config: { selector: 'textarea', value: 'Now translate different text, something much longer' },
                     },
                     {
                         type: ACTION.OPEN,
-                        config: { url: 'https://google.com' },
+                        config: { url: 'https://google.com', delay: 3000 },
                     },
                 ],
             },
