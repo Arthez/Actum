@@ -1,0 +1,62 @@
+:root {
+    --light-gray-color: #EEEEEE;
+    --dark-red-color: #AA4444;
+
+    --default-font-size: 14px;
+    --default-element-distance: 12px;
+}
+
+body {
+    margin: 0;
+    min-width: 280px;
+    max-width: 480px;
+    overflow: hidden;
+    height: 100%;
+}
+
+#info-container {
+    font-size: var(--default-font-size);
+    padding: var(--default-element-distance);
+    border-bottom: 1px solid var(--light-gray-color);
+    flex: 1 0 auto;
+}
+
+#scenario-sections-container {
+    color: var(--dark-red-color);
+    padding: var(--default-element-distance) 0;
+    margin: 0 var(--default-element-distance);
+    font-size: var(--default-font-size);
+}
+
+#update-info-container .update-info {
+    padding: var(--default-element-distance);
+    font-size: var(--default-font-size);
+    font-weight: 600;
+    color: var(--dark-red-color);
+    border-top: 1px solid var(--light-gray-color);
+}
+
+.scroll-container {
+    max-height: 500px;
+    overflow: auto;
+    flex: 1 1 auto;
+}
+
+.scenario-section div ol {
+    margin-top: 8px;
+    margin-bottom: var(--default-element-distance);
+    padding: 0 30px;
+}
+
+.scenario-title {
+    cursor: pointer;
+}
+
+.scenario-title:hover {
+    font-weight: 700;
+}
+
+
+.hide {
+    display: none !important;
+}

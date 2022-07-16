@@ -1,0 +1,35 @@
+{
+  "name": "Actum",
+  "version": "1.0",
+  "description": "Widget to automate various actions",
+  "author": "Artur Ratowski",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": [
+          "shared/event-bus.js",
+          "page/base-actions.js",
+          "page/custom-actions.js",
+          "page/action-engine.js"
+      ]
+    },
+    {
+      "matches": ["https://*/*"],
+      "js": [
+        "shared/event-bus.js",
+        "page/base-actions.js",
+        "page/custom-actions.js",
+        "page/action-engine.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ],
+  "browser_action": {
+    "default_title": "Actum",
+    "default_icon": "icon.png",
+    "default_popup": "widget/widget.html"
+  },
+  "manifest_version": 2
+}
