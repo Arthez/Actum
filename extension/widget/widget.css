@@ -30,7 +30,8 @@ body {
 
 #update-info-container .update-info {
     padding: var(--default-element-distance);
-    font-size: var(--default-font-size);
+    font-size: 12px;
+    opacity: 0.8;
     font-weight: 600;
     color: var(--dark-red-color);
     border-top: 1px solid var(--light-gray-color);
@@ -53,7 +54,7 @@ body {
 }
 
 .scenario-title:hover {
-    font-weight: 700;
+    color: black;
 }
 
 
