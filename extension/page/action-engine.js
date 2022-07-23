@@ -1,4 +1,4 @@
-const ALL_ACTIONS = {...BASE_ACTIONS, ...CUSTOM_ACTIONS};
+const ALL_ACTIONS = { ...BASE_ACTIONS, ...CUSTOM_ACTIONS };
 
 class ActionEngine {
 

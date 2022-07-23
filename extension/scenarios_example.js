@@ -1,5 +1,4 @@
-// THIS is just an example of SCENARIO_SECTIONS configuration
-const SCENARIO_SECTIONS = [
+export const SCENARIO_SECTIONS_EXAMPLE = [
     {
         sectionTitle: 'Section1',
         scenarios: [
@@ -26,6 +25,7 @@ const SCENARIO_SECTIONS = [
             },
             {
                 title: 'Scenario2',
+                hotkey: 9,
                 actions: [
                     {
                         type: ACTION.FILL,
@@ -78,6 +78,7 @@ const SCENARIO_SECTIONS = [
         scenarios: [
             {
                 title: 'Get random Joke',
+                hotkey: 1,
                 actions: [
                     {
                         type: ACTION.getRandomJoke,

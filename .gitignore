@@ -39,5 +39,6 @@ Thumbs.db
 
 # Widget config files
 /extension/scenarios_*
+!/extension/scenarios_example.js
 
 NOTES.md

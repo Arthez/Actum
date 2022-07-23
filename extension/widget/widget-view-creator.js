@@ -1,11 +1,23 @@
-const INFO_CONTAINER_ID = 'info-container';
-const SCENARIO_SECTIONS_CONTAINER_ID = 'scenario-sections-container';
-const UPDATE_INFO_CONTAINER_ID = 'update-info-container';
+export const INFO_CONTAINER_ID = 'info-container';
+export const CONFIG_CONTAINER_ID = 'config-container';
+export const CONFIG_SELECTOR = 'config-selector';
+export const SCENARIO_SECTIONS_CONTAINER_ID = 'scenario-sections-container';
+export const UPDATE_INFO_CONTAINER_ID = 'update-info-container';
 
-class WidgetViewCreator {
+export class WidgetViewCreator {
 
     static renderInfo(text) {
         $.render(INFO_CONTAINER_ID, text);
+    }
+
+    static renderConfigSelector(configs) {
+        const template = `
+        <label for="config-selector">Choose config:</label>
+        <select name="config-selector" id="${CONFIG_SELECTOR}">
+            ${configs.map((item, index) => `<option value="${index}">${item.name}</option>`)}
+        </select>
+        `;
+        $.render(CONFIG_CONTAINER_ID, template);
     }
 
     static renderScenarioSections(scenarioSections) {

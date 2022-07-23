@@ -1,3 +1,6 @@
+import { SCENARIO_SECTIONS_CONFIGS } from '../scenario_sections_config.js';
+import { CONFIG_SELECTOR, WidgetViewCreator } from './widget-view-creator.js';
+
 class Widget {
 
     static emitEvent(scenario, actionIndex) {
@@ -95,21 +98,29 @@ class Widget {
             fetch(remoteManifestUrl).then(response => response.json()),
             fetch(localManifestUrl).then(response => response.json())
         ]).then(([remoteManifest, localManifest]) => {
-            if (localManifest.version < remoteManifest.version) {
+            if (localManifest.version.replaceAll('.', '') < remoteManifest.version.replaceAll('.', '')) {
                 WidgetViewCreator.renderUpdateInfo('New update available on official repository!', 'https://github.com/Arthez/Actum');
             }
         });
     }
 
+    static initScenarioSections(scenarioSections) {
+        WidgetViewCreator.renderScenarioSections(scenarioSections);
+        Widget.initClickListeners(scenarioSections, Widget.handleScenario);
+        Widget.initHotkeys(scenarioSections, Widget.handleScenario);
+        WidgetViewCreator.renderInfo('Waiting for action...');
+    }
+
     static init() {
         WidgetViewCreator.renderInfo('Loading...');
-        if (SCENARIO_SECTIONS && SCENARIO_SECTIONS.length) {
-            WidgetViewCreator.renderScenarioSections(SCENARIO_SECTIONS);
-            Widget.initClickListeners(SCENARIO_SECTIONS, Widget.handleScenario);
-            Widget.initHotkeys(SCENARIO_SECTIONS, Widget.handleScenario);
-            WidgetViewCreator.renderInfo('Waiting for action...');
+        if (SCENARIO_SECTIONS_CONFIGS && SCENARIO_SECTIONS_CONFIGS.length) {
+            WidgetViewCreator.renderConfigSelector(SCENARIO_SECTIONS_CONFIGS);
+            Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[0]?.scenarioSections);
+            $.id(CONFIG_SELECTOR).onchange = function() {
+                Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[this.value]?.scenarioSections);
+            }
         } else {
-            WidgetViewCreator.renderInfo('No scenarios nor actions defined!');
+            WidgetViewCreator.renderInfo('Config in "scenario_sections_config.js" is NOT defined!');
         }
         Widget.checkUpdateAvailability();
     }

@@ -18,14 +18,14 @@ Author: Artur Ratowski
 *Disclaimer: Widget has been tested ONLY on Google Chrome.*
 
 #### How to use:
-1. Define your scenarios and actions in "scenarios.js" (you can find there example configuration)
-1. Go to *chrome://extensions* in your chrome browser and enable developer mode
+1. Define your config scenarios and actions in "scenario_sections_config.js" (you can find there example configuration)
+1. Go to *chrome://extensions* in your chrome browser
 1. Drag "extension" folder on opened extension page
-1. When installed just click on extension icon and click action you want to perform
+1. When installed just click on extension icon and click action you want to perform (might need to pin extension to see the icon)
 
 *Extension must be opened until all scenario steps are finished (progress is visible at the top), otherwise scenario will be stopped.* 
 
 #### Defining custom actions
 1. Add method with logic (e.g. "getRandomJoke") in "page/custom-actions.js" file
 2. Add implemented method to "actions.js"
-3. Now you can use it in your SCENARIO_SECTIONS configuration ("scenarios.js" file)
+3. Now you can use it in your SCENARIO_SECTIONS_CONFIGS configuration ("scenario_sections_config.js" file)

@@ -1,7 +1,7 @@
 {
   "name": "Actum",
-  "version": "1.0",
-  "description": "Widget to automate various actions",
+  "version": "1.1.0",
+  "description": "Widget to automate various actions which are executed with single click or hotkey.",
   "author": "Artur Ratowski",
   "content_scripts": [
     {

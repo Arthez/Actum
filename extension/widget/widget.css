@@ -6,12 +6,16 @@
     --default-element-distance: 12px;
 }
 
+html {
+    height: fit-content;
+}
+
 body {
     margin: 0;
     min-width: 280px;
     max-width: 480px;
     overflow: hidden;
-    height: 100%;
+    height: fit-content;
 }
 
 #info-container {
@@ -19,6 +23,22 @@ body {
     padding: var(--default-element-distance);
     border-bottom: 1px solid var(--light-gray-color);
     flex: 1 0 auto;
+}
+
+#config-container {
+    padding: var(--default-element-distance);
+    font-size: var(--default-font-size);
+    border-bottom: 1px solid var(--light-gray-color);
+    display: flex;
+}
+
+#config-container label {
+    margin-right: 8px;
+}
+
+#config-container select {
+    flex: 1;
+    max-width: 156px;
 }
 
 #scenario-sections-container {
