@@ -1,5 +1,12 @@
 /// This file is only showing how types in TypeScript would be defined for SCENARIO_SECTIONS
 
+type ScenarioSectionsConfigs = ScenarioSectionsConfig[];
+
+interface ScenarioSectionsConfig {
+    name: string;
+    scenarioSections: ScenarioSection[];
+}
+
 interface ScenarioSection {
     sectionTitle: string;
     scenarios: Scenario[];
@@ -19,9 +26,7 @@ declare enum ActionType {
     WAIT = 'wait',
 
     // CUSTOM actions
-    JIRAkeys = 'JIRAkeys',
-    JIRAPublicTranslations = 'JIRAPublicTranslations',
-    JIRAPrivateTranslations = 'JIRAPrivateTranslations',
+    getRandomJoke = 'getRandomJoke',
 }
 
 interface Action {
