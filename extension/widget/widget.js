@@ -98,7 +98,7 @@ class Widget {
             fetch(remoteManifestUrl).then(response => response.json()),
             fetch(localManifestUrl).then(response => response.json())
         ]).then(([remoteManifest, localManifest]) => {
-            if (localManifest.version < remoteManifest.version) {
+            if (localManifest.version.replaceAll('.', '') < remoteManifest.version.replaceAll('.', '')) {
                 WidgetViewCreator.renderUpdateInfo('New update available on official repository!', 'https://github.com/Arthez/Actum');
             }
         });
