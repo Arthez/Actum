@@ -1,5 +1,6 @@
 import { SCENARIO_SECTIONS_CONFIGS } from '../scenario_sections_config.js';
 import { CONFIG_SELECTOR, WidgetViewCreator } from './widget-view-creator.js';
+import { WidgetLocalStorage } from './widget-local-storage.js';
 
 class Widget {
 
@@ -115,10 +116,14 @@ class Widget {
         WidgetViewCreator.renderInfo('Loading...');
         if (SCENARIO_SECTIONS_CONFIGS && SCENARIO_SECTIONS_CONFIGS.length) {
             WidgetViewCreator.renderConfigSelector(SCENARIO_SECTIONS_CONFIGS);
-            Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[0]?.scenarioSections);
-            $.id(CONFIG_SELECTOR).onchange = function() {
-                Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[this.value]?.scenarioSections);
-            }
+            const defaultConfigIndex = SCENARIO_SECTIONS_CONFIGS.findIndex(config => config.name === WidgetLocalStorage.getDefaultConfigName());
+            Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[defaultConfigIndex]?.scenarioSections || SCENARIO_SECTIONS_CONFIGS[0]?.scenarioSections);
+            const configSelector = $.id(CONFIG_SELECTOR);
+            configSelector.value = defaultConfigIndex || 0;
+            configSelector.onchange = function() {
+                WidgetLocalStorage.setDefaultConfigName(SCENARIO_SECTIONS_CONFIGS[this.value].name);
+                Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[this.value].scenarioSections);
+            };
         } else {
             WidgetViewCreator.renderInfo('Config in "scenario_sections_config.js" is NOT defined!');
         }
