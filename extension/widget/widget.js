@@ -112,18 +112,22 @@ class Widget {
         WidgetViewCreator.renderInfo('Waiting for action...');
     }
 
+    static initConfigSelector(configIndex) {
+        const configSelector = $.id(CONFIG_SELECTOR);
+        configSelector.value = configIndex || 0;
+        configSelector.onchange = function() {
+            WidgetLocalStorage.setDefaultConfigName(SCENARIO_SECTIONS_CONFIGS[this.value].name);
+            Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[this.value].scenarioSections);
+        };
+    }
+
     static init() {
         WidgetViewCreator.renderInfo('Loading...');
         if (SCENARIO_SECTIONS_CONFIGS && SCENARIO_SECTIONS_CONFIGS.length) {
             WidgetViewCreator.renderConfigSelector(SCENARIO_SECTIONS_CONFIGS);
             const defaultConfigIndex = SCENARIO_SECTIONS_CONFIGS.findIndex(config => config.name === WidgetLocalStorage.getDefaultConfigName());
             Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[defaultConfigIndex]?.scenarioSections || SCENARIO_SECTIONS_CONFIGS[0]?.scenarioSections);
-            const configSelector = $.id(CONFIG_SELECTOR);
-            configSelector.value = defaultConfigIndex || 0;
-            configSelector.onchange = function() {
-                WidgetLocalStorage.setDefaultConfigName(SCENARIO_SECTIONS_CONFIGS[this.value].name);
-                Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[this.value].scenarioSections);
-            };
+            Widget.initConfigSelector(defaultConfigIndex || 0);
         } else {
             WidgetViewCreator.renderInfo('Config in "scenario_sections_config.js" is NOT defined!');
         }
