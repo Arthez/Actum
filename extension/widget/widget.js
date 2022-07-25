@@ -99,7 +99,10 @@ class Widget {
             fetch(remoteManifestUrl).then(response => response.json()),
             fetch(localManifestUrl).then(response => response.json())
         ]).then(([remoteManifest, localManifest]) => {
-            if (localManifest.version.replaceAll('.', '') < remoteManifest.version.replaceAll('.', '')) {
+            const [localMajor, localMinor, localPatch] = localManifest.version.split('.').map(ver => parseInt(ver, 10));
+            const [remoteMajor, remoteMinor, remotePatch] = remoteManifest.version.split('.').map(ver => parseInt(ver, 10));
+
+            if ((localMajor < remoteMajor) || (localMinor < remoteMinor) || (localPatch < remotePatch)) {
                 WidgetViewCreator.renderUpdateInfo('New update available on official repository!', 'https://github.com/Arthez/Actum');
             }
         });
