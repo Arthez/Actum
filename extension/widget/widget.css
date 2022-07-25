@@ -25,7 +25,7 @@ body {
     flex: 1 0 auto;
 }
 
-#config-container {
+#config-container > div {
     padding: var(--default-element-distance);
     font-size: var(--default-font-size);
     border-bottom: 1px solid var(--light-gray-color);

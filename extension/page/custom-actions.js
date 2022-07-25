@@ -1,6 +1,6 @@
 const CUSTOM_ACTIONS = {
 
-    // Just example of custom action
+    // Example of custom action
     getRandomJoke: () => {
         const copyToClipboard = str => {
             const el = document.createElement('textarea');

@@ -11,11 +11,17 @@ export class WidgetViewCreator {
     }
 
     static renderConfigSelector(configs) {
+        if (!configs || configs.length <= 1) {
+            return;
+        }
+
         const template = `
-        <label for="config-selector">Choose config:</label>
-        <select name="config-selector" id="${CONFIG_SELECTOR}">
-            ${configs.map((item, index) => `<option value="${index}">${item.name}</option>`)}
-        </select>
+        <div>
+            <label for="config-selector">Choose config:</label>
+            <select name="config-selector" id="${CONFIG_SELECTOR}">
+                ${configs.map((item, index) => `<option value="${index}">${item.name}</option>`)}
+            </select>
+        </div>
         `;
         $.render(CONFIG_CONTAINER_ID, template);
     }

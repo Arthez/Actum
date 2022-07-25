@@ -1,4 +1,4 @@
-// // THIS is just an example of SCENARIO_SECTIONS configuration
+// THIS is an example of SCENARIO_SECTIONS configuration, add your own configs to SCENARIO_SECTIONS_CONFIGS
 import { SCENARIO_SECTIONS_EXAMPLE } from './scenarios_example.js';
 
 export const SCENARIO_SECTIONS_CONFIGS = [
