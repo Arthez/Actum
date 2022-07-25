@@ -54,11 +54,11 @@ body {
     opacity: 0.8;
     font-weight: 600;
     color: var(--dark-red-color);
-    border-bottom: 1px solid var(--light-gray-color);
+    border-top: 1px solid var(--light-gray-color);
 }
 
 .scroll-container {
-    max-height: 500px;
+    max-height: 450px;
     overflow: auto;
     flex: 1 1 auto;
 }
