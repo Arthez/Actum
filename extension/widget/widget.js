@@ -128,9 +128,10 @@ class Widget {
         WidgetViewCreator.renderInfo('Loading...');
         if (SCENARIO_SECTIONS_CONFIGS && SCENARIO_SECTIONS_CONFIGS.length) {
             WidgetViewCreator.renderConfigSelector(SCENARIO_SECTIONS_CONFIGS);
-            const defaultConfigIndex = SCENARIO_SECTIONS_CONFIGS.findIndex(config => config.name === WidgetLocalStorage.getDefaultConfigName());
-            Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[defaultConfigIndex]?.scenarioSections || SCENARIO_SECTIONS_CONFIGS[0]?.scenarioSections);
-            Widget.initConfigSelector(defaultConfigIndex || 0);
+            const configIndexFromStorage = SCENARIO_SECTIONS_CONFIGS.findIndex(config => config.name === WidgetLocalStorage.getDefaultConfigName());
+            const defaultConfigIndex = configIndexFromStorage >= 0 ? configIndexFromStorage : 0;
+            Widget.initConfigSelector(defaultConfigIndex);
+            Widget.initScenarioSections(SCENARIO_SECTIONS_CONFIGS[defaultConfigIndex]?.scenarioSections);
         } else {
             WidgetViewCreator.renderInfo('Config in "scenario_sections_config.js" is NOT defined!');
         }

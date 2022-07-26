@@ -6,3 +6,4 @@
 - UI improvements (config selector visible only when multiple configs are available)
 - Comment improvements 
 - Fixed comparing local and remote versions
+- Fixed init value of config selector when widget is opened for the first time
