@@ -116,6 +116,11 @@ class Widget {
     }
 
     static initConfigSelector(configIndex) {
+        if (!SCENARIO_SECTIONS_CONFIGS || SCENARIO_SECTIONS_CONFIGS.length <= 1) {
+            return;
+        }
+
+        WidgetViewCreator.renderConfigSelector(SCENARIO_SECTIONS_CONFIGS);
         const configSelector = $.id(CONFIG_SELECTOR);
         configSelector.value = configIndex || 0;
         configSelector.onchange = function() {
@@ -127,7 +132,6 @@ class Widget {
     static init() {
         WidgetViewCreator.renderInfo('Loading...');
         if (SCENARIO_SECTIONS_CONFIGS && SCENARIO_SECTIONS_CONFIGS.length) {
-            WidgetViewCreator.renderConfigSelector(SCENARIO_SECTIONS_CONFIGS);
             const configIndexFromStorage = SCENARIO_SECTIONS_CONFIGS.findIndex(config => config.name === WidgetLocalStorage.getDefaultConfigName());
             const defaultConfigIndex = configIndexFromStorage >= 0 ? configIndexFromStorage : 0;
             Widget.initConfigSelector(defaultConfigIndex);

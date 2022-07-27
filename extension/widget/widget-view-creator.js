@@ -11,10 +11,6 @@ export class WidgetViewCreator {
     }
 
     static renderConfigSelector(configs) {
-        if (!configs || configs.length <= 1) {
-            return;
-        }
-
         const template = `
         <div>
             <label for="config-selector">Choose config:</label>
